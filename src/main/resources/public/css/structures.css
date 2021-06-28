@@ -1,0 +1,96 @@
+/*
+    Sip Console web app
+    Version 1.0.0
+
+    Requires Bootstrap from Twitter (bootstrap.css) from http://getbootstrap.com/
+    Requires 'Roboto' Font from Google
+
+    -- Structural Styling and Common Style Classes
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    overflow-x: hidden;
+}
+#app-back{
+        min-width: 1100px;
+}
+
+/* FONT STYLES*/
+h1 {font-size: 22px; font-weight: bold;}
+h2{font-size: 18px; font-weight: 400;}
+h3{font-size: 14px; font-weight: bold;}
+h4{font-size: 13px;}
+p{font-size: 12px;}
+body{font-size: 12px;}
+
+/* COLORS*/
+.green{color: #7ac142}
+.green-back{background-color: #7ac142}
+.green-back.hover:hover{background-color: #d5e9c1}
+.green-back.back{background-color: #f9fcf6}
+
+.yellow{color: #ffe35c}
+.yellow-back{background-color: #ffe35c}
+.yellow-back.hover:hover{background-color: #fef3ba}
+.yellow-back.back{background-color: #fef3ba}
+
+.red{color: #d21848}
+.red.hover:hover{color: #f1bab6}
+.red-back{background-color: #d21848}
+.red-back.hover:hover{background-color: #f1bab6}
+.red-back.back{background-color: #fdf7f6}
+
+
+.grey{color: #696a6c}
+.grey-back{background-color: #696a6c}
+.grey-back.hover:hover{background-color: #dddedf}
+.grey-back.back{background-color: #dddedf}
+
+.dark-grey{color: #333740}
+.dark-grey-back{background-color: #333740}
+
+
+
+.icon {
+    position: relative;
+    padding: 5px;
+    max-height: 50px;
+}
+
+
+/* ANIMATIONS */
+body *{
+    transition: all .4s;
+}
+
+/* SCROLL BAR STYLING */
+#app-users::-webkit-scrollbar              {
+    background-color: #b0b1b5;
+}
+#app-users::-webkit-scrollbar-button       {
+}
+#app-users::-webkit-scrollbar-track        {
+}
+#app-users::-webkit-scrollbar-track-piece
+{
+}
+#app-users::-webkit-scrollbar-thumb
+{
+background-color: #fff;
+    border: solid 1px #000;
+}
+#app-users::-webkit-scrollbar-corner       {
+}
+#app-users::-webkit-resizer                {
+}
+
+/*scrollbar Class*/
+.scrollbar::-webkit-scrollbar              {
+    background-color: #b0b1b5;
+}
+.scrollbar::-webkit-scrollbar-thumb
+{
+background-color: #fff;
+    border: solid 1px #000;
+}

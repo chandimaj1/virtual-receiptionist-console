@@ -1,0 +1,717 @@
+<!--
+    Sip Console web app
+    Version 1.0.0
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Favicons -->
+        <link href="images/favicon.png" rel="icon"/>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/jquery-ui.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="css/structures.css">
+        <link rel="stylesheet" href="css/astyle.css">
+            <!-- Fonts -->
+            <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Javascripts -->
+
+        <!-- Frameworks -->
+        <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+        <script type="text/javascript" src="js/sip-mod.js"></script>
+        <!-- UI Scripts -->
+        <script type="text/javascript" src="js/uiscripts.js"></script>
+        <!-- Sorting Scripts -->
+        <script type="text/javascript" src="js/ui_sorting.js"></script>
+        <!-- Search Scripts -->
+        <script type="text/javascript" src="js/ui_search.js"></script>
+        <!-- TIMER SCRIPTS-->
+        <script type="text/javascript" src="js/timer.js"></script>
+
+
+        <!-- Cookies related JS -->
+        <script type="text/javascript" src="js/a_handle_cookies.js"></script>
+        <!-- JS Configuration variables -->
+        <script type="text/javascript" src="js/b_configs.js"></script>
+        <!-- Sessions management -->
+        <script type="text/javascript" src="js/c_sessions.js"></script>
+        <!-- Presence Scripts-->
+        <script type="text/javascript" src="js/e_presence.js"></script>
+        <!-- Huntgroup Scripts-->
+        <script type="text/javascript" src="js/e2_huntgroups.js"></script>
+        <!-- Phone and DMTF Scripts-->
+        <script type="text/javascript" src="js/f_phone.js"></script>
+         <!-- Console Init -->
+        <script type="text/javascript" src="js/d_console_login.js"></script>
+        <!-- Console Scripts-->
+        <script type="text/javascript" src="js/g_mysip.js"></script>
+
+
+
+        <title>Sip Console Web App V1.0.5</title>
+    </head>
+
+    <body>
+        <div id="app-back" class="grey-back">
+            <div class="container-fluid">
+                <div id="app-console-bar" class="row grey-back back"> <!-- App Console Bar -->
+                    <div id="bar-info" class="col-xs-10"><!-- Bar Info -->
+                        <div id="info-date" class="info-item">
+                            <i class="icon icon-icon-date"></i>
+                            <h4 id="info-item-date"> </h4>
+                        </div>
+
+                        <div id="info-date" class="info-item">
+                            <i class="icon icon-icon-time"></i>
+                            <h4 id="info-item-time"> 23:54</h4>
+                        </div>
+
+                        <div id="info-appuser" class="info-item">
+                            <i class="icon icon-icon-profile"></i>
+                            <h4 id="info-item-uname" > Sign In</h4>
+                        </div>
+                    </div><!-- / Bar info -->
+                    <div class="col-xs-2">
+                        <div id="show-settings" class="text-right red hover">
+                            <img id="lock_on" class="lock " src="images/locked.svg" onclick="showSettings();">
+                            <img id="lock_off" class="lock hidden" src="images/unlock.svg" onclick="lock_console_ui();">
+                        </div>
+                    </div>
+                </div><!-- / App Console Bar-->
+            </div>
+
+            <div id="app-console">
+                <div id="app-lines" class="col-md-x"><!-- App Lines -->
+
+    <!-- Line1 -->
+                    <div id="line1" class="console-lines grey-back back row deactline">
+                        <div class="row">
+                            <div class="linetxt col-md-6">Inactive - Line1</div>
+                            <div class="col-md-6 dragme">
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="phonenumber">
+                                <div class="calltimeCounter">00:00:00</div>
+                            </div>
+                        </div>
+                        <div class="row linebtns">
+                            <div class="col-md-4">
+                                <div id="line1call" class="call linebtn green-back hover inactive"><i class="icon icon-icon-call-answer"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="line1hangup" class="hangup linebtn red-back hover inactive"><i class="icon icon-icon-call-hang-up"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="line1hold" class="hold linebtn yellow-back hover inactive"><i class="icon icon-icon-call-hold"></i></div>
+                            </div>
+                        </div>
+
+                         <div class="row linetransfer">
+                            <div class="col-md-6">
+                                <input class="extenstion" placeholder="Type ext number" type="text">
+                            </div>
+                            <div class="col-md-3">
+                                    <select class="selectline">
+                                        <option value="none" selected>none</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="transfer hover"><i class="icon icon-icon-call-transfer"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+<!-- Line2 -->
+                    <div id="line2" class="console-lines  deactline grey-back back row">
+                        <div class="row">
+                            <div class="linetxt col-md-6">Inactive - Line2</div>
+                            <div class="col-md-6 dragme">
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="phonenumber">
+                                <div class="calltimeCounter">00:00:00</div>
+                            </div>
+                        </div>
+                        <div class="row linebtns">
+                            <div class="col-md-4">
+                                <div class="call linebtn green-back hover inactive"><i class="icon icon-icon-call-answer"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hangup linebtn red-back hover inactive"><i class="icon icon-icon-call-hang-up"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hold linebtn yellow-back hover inactive"><i class="icon icon-icon-call-hold"></i></div>
+                            </div>
+                        </div>
+
+                         <div class="row linetransfer">
+                            <div class="col-md-6">
+                                <input class="extenstion" placeholder="Type ext number" type="text">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="selectline">
+                                        <option value="none" selected>none</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="transfer hover"><i class="icon icon-icon-call-transfer"></i></div>
+                            </div>
+                        </div>
+                    </div>
+<!-- Line3 -->
+                    <div id="line3" class="console-lines grey-back back row deactline">
+                        <div class="row">
+                            <div class="linetxt col-md-6">Inactive - Line3</div>
+                            <div class="col-md-6 dragme">
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="phonenumber">
+                                <div class="calltimeCounter">00:00:00</div>
+                            </div>
+                        </div>
+                        <div class="row linebtns">
+                            <div class="col-md-4">
+                                <div class="call linebtn green-back hover"><i class="icon icon-icon-call-answer"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hangup linebtn red-back hover"><i class="icon icon-icon-call-hang-up"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hold linebtn yellow-back hover"><i class="icon icon-icon-call-hold"></i></div>
+                            </div>
+                        </div>
+
+                         <div class="row linetransfer">
+                            <div class="col-md-6">
+                                <input class="extenstion" placeholder="Type ext number" type="text">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="selectline">
+                                        <option value="none" selected>none</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="transfer hover"><i class="icon icon-icon-call-transfer"></i></div>
+                            </div>
+                        </div>
+                    </div>
+<!-- Line4 -->
+                    <div id="line4" class="deactline dragable_line console-lines grey-back back row">
+                        <div class="row">
+                            <div class="linetxt col-md-6">Inactive - Line4</div>
+                            <div class="col-md-6 dragme">
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                                <div class="threelines"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="phonenumber">
+                                <div class="calltimeCounter">00:00:00</div>
+                            </div>
+                        </div>
+                        <div class="row linebtns">
+                            <div class="col-md-4">
+                                <div class="call linebtn green-back hover"><i class="icon icon-icon-call-answer"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hangup linebtn red-back hover"><i class="icon icon-icon-call-hang-up"></i></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hold linebtn yellow-back hover"><i class="icon icon-icon-call-hold"></i></div>
+                            </div>
+                        </div>
+
+                         <div class="row linetransfer">
+                            <div class="col-md-6">
+                                <input class="extenstion" placeholder="Type ext number" type="text">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="selectline">
+                                        <option value="none" selected>none</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="transfer hover"><i class="icon icon-icon-call-transfer"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!---------------------------
+                                Phone
+                    ---------------------------->
+
+                    <div id="phone" class="console-lines row">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" id="phone-display">
+                            </div>
+                        </div>
+
+                        <div class="row dialbtns">
+                            <div class="col-md-4">
+                                <div class="dialbtn">1</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">2</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">3</div>
+                            </div>
+                        </div>
+                        <div class="row dialbtns">
+                            <div class="col-md-4">
+                                <div class="dialbtn">4</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">5</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">6</div>
+                            </div>
+                        </div>
+                        <div class="row dialbtns">
+                            <div class="col-md-4">
+                                <div class="dialbtn">7</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">8</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">9</div>
+                            </div>
+                        </div>
+                        <div class="row dialbtns">
+                            <div class="col-md-4">
+                                <div class="dialbtn">#</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">0</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dialbtn">*</div>
+                            </div>
+                        </div>
+                        <div class="row linebtns"><!-- Controls -->
+                            <div class="col-md-4" >
+                                <div class="call linebtn green-back hover" onclick="phone_call_out()"><i class="icon icon-icon-call-answer"></i></div>
+                                <div class="phonebtn-txt">Call/Answer</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hangup linebtn red-back hover"><i class="icon icon-icon-call-hang-up"></i></div>
+                                <div class="phonebtn-txt">Hang up</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="hold linebtn yellow-back hover"><i class="icon icon-icon-call-hold"></i></div>
+                                <div class="phonebtn-txt">Hold</div>
+                            </div>
+                        </div>
+
+                    </div><!-- / phone -->
+
+
+
+                </div><!-- / App lines -->
+
+
+
+    <!-- App WRAP --------------------->
+                <div id="app-wrap" class="col-md-y">
+                    <div id="app-tabs" class="row">
+                        <div id="menutabs" class="col-sm-6"><!-- Menu Tabs -->
+                            <div id="tab-users" class="tab-item" onclick="switch_tab('users')">
+                                <i class="icon icon-icon-users"></i>
+                                <h4> Users</h4>
+                            </div>
+
+                            <div id="tab-history" class="tab-item deactive" onclick="switch_tab('history')">
+                                <i class="icon icon-icon-call-history"></i>
+                                <h4> Call History</h4>
+                            </div>
+
+                            <div id="tab-phonebook" class="tab-item deactive" onclick="switch_tab('phonebook')">
+                                <i class="icon icon-icon-phone-directory"></i>
+                                <h4> Phone Directory</h4>
+                            </div>
+                        </div><!-- /menu tabs -->
+
+                        <div id="sortings" class="col-sm-6"><!-- Sorting Tabs -->
+                            <div id="wrap-sort">
+                                <div id="home_btn" onclick="switch_tab('users');" class="dark-grey-back hover"></div>
+
+                                <div id="searchbtn" onclick="search_tabs();" class="dark-grey-back hover"></div>
+                                <input id="searchfield" type="text" class="sortlist" onkeydown="search_keypress(event);">
+
+                                <select class="sortlist" id="select_sort" onchange="sort_list(this)">
+                                    <option disabled id="usersf" selected='true'>Arrange Elements</option>
+
+                                    <optgroup id="app-usersf">
+                                        <option value="user_name_asc">Name (Ascending)</option>
+                                        <option value="user_name_dsc">Name (Descending)</option>
+                                    </optgroup>
+
+                                    <optgroup id="app-historyf">
+                                        <option value="time_asc">Time &amp; Date (Ascending)</option>
+                                        <option value="time_desc">Time &amp; Date (Descending)</option>
+                                        <option value="dur_asc">Duration (Ascending)</option>
+                                        <option value="dur_desc">Duration (Descending)</option>
+                                    </optgroup>
+
+                                    <optgroup id="app-phonebookf">
+                                        <option value="phone_name_asc">Name (Ascending)</option>
+                                        <option value="phone_name_desc">Name (Descending)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div><!-- / Sorting Tabs -->
+                    </div><!-- / app tabs -->
+
+
+                    <!---------------------------->
+<!-- -------------------- APP USERS TAB-->
+                    <div id="app-usersx" class="row app-tabs-body"><!-- App Users -->
+                        <div id="app-users" class="app-body-inner">
+                            <div id="hunt_groups">
+                                <div class="row hung_groups">
+                                    <div class="hunt-user" id="addhuntuser" onclick="huntgroups_from_cloud()">
+                                        <img src="images/add_user.png">
+                                        <div style="color:#fff">ADD HUNTGROUP</div>
+                                    </div>
+                                </div>
+                                <div class="row hunt_bottom_row" id="hunt_row">
+                                        <div class="col-md-10 hunt_lines">
+                                            <div class="threelines"></div>
+                                            <div class="threelines"></div>
+                                            <div class="threelines"></div>
+                                        </div>
+                                        <div class="col-md-2 add_new_row" onclick="add_hunt_row();">
+                                            <div class="add_new_row_title">ADD NEW ROW <img src="images/add_row.png" class="add_row_png"></div>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="app-user" id="adduser" onclick="presences_from_cloud();">
+                                <img src="images/add_user.png">
+                                <div>ADD USER</div>
+                            </div>
+
+                        </div>
+                    </div><!-- / app-users-->
+
+<!-- -------------------- APP HISTORY -->
+
+                    <div id="app-historyx" class="row app-tabs-body">
+                        <div id="app-history" class="app-body-inner">
+                            <!-- IN -->
+                            <div class="col-md-6 history-log" id="history-log-in">
+                                <div class="log-back">
+                                    <div class="bigtitle">
+                                        <i class="icon icon-icon-incoming-calls"></i>
+                                        Incoming Calls
+                                    </div>
+                                    <div class="scrollback scrollbar">
+                                        <div class="log-row-title ">
+                                            <div class="col-md-4">Number</div>
+                                            <div class="col-md-3">Time</div>
+                                            <div class="col-md-3">Duration</div>
+                                            <div class="col-md-2">Action</div>
+                                        </div>
+                                        <div class="added_rows" id="added_rows_in">
+                                            <!-- rows addded here -->
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                            <!-- OUT -->
+                            <div class="col-md-6 history-log" id="history-log-out">
+                                <div class="log-back scrollbar">
+                                    <div class="bigtitle">
+                                        <i class="icon icon-icon-outgoing-calls"></i>
+                                        Outgoing Calls
+                                    </div>
+
+                                    <div class="scrollback scrollbar">
+                                        <div class="log-row-title ">
+                                            <div class="col-md-4">Number</div>
+                                            <div class="col-md-3">Time</div>
+                                            <div class="col-md-3 ">Duration</div>
+                                            <div class="col-md-2">Action</div>
+                                        </div>
+                                <div class="added_rows" id="added_rows_out">
+                                    <!-- rows added here -->
+                                </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- -------------------- APP HISTORY -->
+
+                    <div id="app-phonebookx" class="row app-tabs-body">
+                        <div id="app-phonebook" class="app-body-inner">
+                            <div class="col-md-12 directory-list" id="directory">
+                                <div class="log-back">
+
+                                    <div class="bigtitle">
+                                        Directory
+                                    </div>
+                                    <div class="scrollback scrollbar">
+                                        <div class="log-row-title ">
+                                            <div class="col-md-6">Name</div>
+                                            <div class="col-md-4">Extension</div>
+                                            <div class="col-md-2">
+                                                Action
+                                            </div>
+                                        </div>
+                                        <div class="added_rows" id="added-directory-rows">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+                </div><!---- / APP WRAP -->
+
+            </div><!-- / app console -->
+        </div><!-- / app back -->
+
+
+
+
+
+
+
+
+
+    <!-- OVERLAYS -->
+
+        <div id="app-token-error"><!-- TOKEN EXPIRATION -->
+            <div id="add-init-box" style="padding:20px;">
+                <p style="text-align:center; font-size:18px;">Your session has expired<br>
+                <span style="font-size:14px"> please close and reload your console</span>
+                </p>
+                <div id="closenreload" class="userbox-submit" onclick="close_and_reload();">Exit</div>
+            </div>
+        </div>
+
+        <div id="app-login-prompt"><!-- APP LOGIN -->
+            <div id="add-user-box">
+                <div class="userbox-line text-center" id="userbox-title">
+                    Reception Console Settings
+                    <!--
+            <i id="userbox-closebtn" onclick="closeOverlay('app-login-prompt');" class="icon icon-icon-close"></i>
+            -->
+                </div>
+                <!-- Error Message -->
+                <div id="app_login-error" class="errormsg"></div>
+                    <h4>Console User Information</h4>
+                <form>
+                <div class="userbox-line">URI*</div>
+                <input id="login_prompt_uri" type="text" class="userbox-line" value="">
+
+                <div class="userbox-line">Extension</div>
+                <input id="login_prompt_ext" type="text" class="userbox-line" value="">
+
+                <div class="userbox-line">Username</div>
+                <input id="login_prompt_uname" type="text" class="userbox-line" value="">
+
+                <div class="userbox-line">Password</div>
+                <input id="login_prompt_pw" type="password" class="userbox-line" value="">
+
+                <div class="userbox-line">WS Server</div>
+                <input id="login_prompt_ws" type="text" class="userbox-line" placeholder="Specify ws:// or wss://" value="">
+                </form>
+                        <div id="userbox-submit" class="userbox-submit" onclick="set_app_domain()">Submit</div>
+            </div>
+        </div>
+
+        <div id="add-user"><!-- Add Huntgroup -->
+            <div id="userbox-error" class="errormsg"></div>
+            <div id="add-presence-box">
+                <div class="userbox-line" id="userbox-title">
+                    Add User <i id="userbox-closebtn" onclick="closeOverlay('add-user');" class="icon icon-icon-close"></i>
+                </div>
+
+                <div id="presence-list-placeholder">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div id="hunt-list-submit" class="userbox-submit" onclick="submit_newUser()">Submit</div>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="add-huntgroup"><!-- Add Huntgroup -->
+            <div id="add-huntgroup-box">
+                <div class="userbox-line" id="userbox-title">
+                    Add huntgroup <i id="userbox-closebtn" onclick="closeOverlay('add-huntgroup');" class="icon icon-icon-close"></i>
+                </div>
+
+                <h6 class="hunt_error"></h6>
+
+                <div id="hunt-list-placeholder">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div id="hunt-list-submit" class="userbox-submit" onclick="submit_newHuntgroup()">Submit</div>
+                    </div>
+                    <div class="col-md-4"></div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    <div id="app_user_templete">
+            <div class="user-row user-availability">
+                <div class="availability-circle"></div>
+                <!-- Availability notifications -->
+                  <div class="availability-txt unavailable">Unavailable</div>
+                   <div class="availability-txt available">Available</div>
+                    <div class="availability-txt busy">Busy</div>
+                    <div class="availability-number">101</div>
+            </div>
+            <div class="user-close" onclick="delete_user(this)"><i class="icon icon-icon-close"></i></div>
+            <div class="user-row user-name">
+                    Name Here
+            </div>
+
+            <i class="cog hidecog icon-icon-phone-settings" onclick="toggle_color(this)"></i>
+
+            <input type="text" class="hidden_uri" style="display:none;"/>
+            <input type="text" class="hidden_plink" style="display:none;"/>
+            <div class="user-row user-call">
+                 <div class="user-callbtn" onclick="presence_user_call(this)">
+                      <i class="icon icon-icon-call-answer"></i> Call
+                  </div>
+            </div>
+        <div class="color-selection">
+                <div class="color_triangle"></div>
+                <div class="color_title">Custom background colour</div>
+                <div class="row">
+                    <div class="icon icon-icon-tick circle xdcf1ec" style="margin-left:20px;" onclick="color_change_hunt(this,'dcf1ec')"></div>
+                    <div class="icon icon-icon-tick circle xdeeff9" onclick="color_change_hunt(this,'deeff9')"></div>
+                    <div class="icon icon-icon-tick circle xe2d3e6" onclick="color_change_hunt(this,'e2d3e6')"></div>
+                    <div class="icon icon-icon-tick circle xf2e193" onclick="color_change_hunt(this,'f2e193')"></div>
+                </div>
+                <div class="row">
+                    <div class="icon icon-icon-tick circle xfadcc4" style="margin-left:20px;" onclick="color_change_hunt(this,'fadcc4')"></div>
+                    <div class="icon icon-icon-tick circle xfde1de" onclick="color_change_hunt(this,'fde1de')"></div>
+                    <div class="icon icon-icon-tick circle xcad2d4" onclick="color_change_hunt(this,'cad2d4')"></div>
+                    <div class="icon icon-icon-tick circle xf7c6d5" onclick="color_change_hunt(this,'f7c6d5')"></div>
+                </div>
+                <div class="row">
+                    <div class="icon icon-icon-tick circle xccda49" style="margin-left:20px;" onclick="color_change_hunt(this,'ccda49')"></div>
+                    <div class="icon icon-icon-tick circle xfeb3a0" onclick="color_change_hunt(this,'feb3a0')"></div>
+                    <div class="icon icon-icon-tick circle x79e4e7" onclick="color_change_hunt(this,'79e4e7')"></div>
+                    <div class="icon icon-icon-tick circle" onclick="color_change_hunt(this,'ffffff')"></div>
+                </div>
+            </div>
+    </div>
+
+
+    <div id="app_hunt_template">
+        <div class="user-close" onclick="delete_hunt(this)">
+            <i class="icon icon-icon-close"></i>
+        </div>
+        <div id="hunt_name">HUNTGROUP NAME ONE</div>
+        <i class="cog hidecog icon-icon-phone-settings" onclick="toggle_color(this)"></i>
+        <input type="text" class="hidden_uri" style="display:none;"/>
+        <input type="text" class="hidden_plink" style="display:none;"/>
+            <div class="color-selection">
+                <div class="color_triangle"></div>
+                <div class="color_title">Custom background colour</div>
+                <div class="row">
+                    <div class="icon icon-icon-tick circle xdcf1ec" style="margin-left:20px;" onclick="color_change_hunt(this,'dcf1ec')"></div>
+                    <div class="icon icon-icon-tick circle xdeeff9" onclick="color_change_hunt(this,'deeff9')"></div>
+                    <div class="icon icon-icon-tick circle xe2d3e6" onclick="color_change_hunt(this,'e2d3e6')"></div>
+                    <div class="icon icon-icon-tick circle xf2e193" onclick="color_change_hunt(this,'f2e193')"></div>
+                </div>
+                <div class="row">
+                    <div class="icon icon-icon-tick circle xfadcc4" style="margin-left:20px;" onclick="color_change_hunt(this,'fadcc4')"></div>
+                    <div class="icon icon-icon-tick circle xfde1de" onclick="color_change_hunt(this,'fde1de')"></div>
+                    <div class="icon icon-icon-tick circle xcad2d4" onclick="color_change_hunt(this,'cad2d4')"></div>
+                    <div class="icon icon-icon-tick circle xf7c6d5" onclick="color_change_hunt(this,'f7c6d5')"></div>
+                </div>
+                <div class="row">
+                    <div class="icon icon-icon-tick circle xccda49" style="margin-left:20px;" onclick="color_change_hunt(this,'ccda49')"></div>
+                    <div class="icon icon-icon-tick circle xfeb3a0" onclick="color_change_hunt(this,'feb3a0')"></div>
+                    <div class="icon icon-icon-tick circle x79e4e7" onclick="color_change_hunt(this,'79e4e7')"></div>
+                    <div class="icon icon-icon-tick circle" onclick="color_change_hunt(this,'ffffff')"></div>
+                </div>
+            </div>
+    </div>
+
+
+    <!-- SIP CALLING ELEMENTS -->
+        <div id="localsipelements">
+            <video autoplay id="line0in"></video>
+            <video autoplay id="line0out"></video>
+            <video autoplay id="line1in"></video>
+            <video autoplay id="line1out"></video>
+            <video autoplay id="line2in"></video>
+            <video autoplay id="line2out"></video>
+            <video autoplay id="line3in"></video>
+            <video autoplay id="line3out"></video>
+            <video autoplay id="line4in"></video>
+            <video autoplay id="line4out"></video>
+
+            <audio id="audio_ring" loop src="audio/ring.wav"></audio>
+            <audio id="audio_hangup" src="audio/hangup.wav"></audio>
+            <audio id="audio_alert" src="audio/ALERT_asterik.wav" loop></audio>
+            <audio id="audio_dmtf" src="audio/dtmf.wav"></audio>
+        </div>
+
+
+<!-------------->
+        <div id="bar-settings"> <!-- Bar Settings -->
+                        <div id="settings-back" class="row">
+                            <input type="password" id="pw_settings" placeholder="Type your password here" class="setting-item"/>
+                            <div class="" id="settings-save" onclick="check_pw()">Unlock</div>
+                        </div>
+        </div><!-- / Bar Settings Bar -->
+    </body>
+</html>

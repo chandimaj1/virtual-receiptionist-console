@@ -1,0 +1,185 @@
+{
+	"info": {
+		"name": "receptionist-console",
+		"_postman_id": "43e2a815-72e7-933a-b173-bb2e14ec8a2f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Curent Session",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{protocol}}://{{url}}/sessions/search/getCurrentSession/",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sessions",
+						"search",
+						"getCurrentSession",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "presence entities",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:8443/presenceEntities",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"presenceEntities"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Presence Entity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"user-3\", \"userName\" : \"user3\", \"session\": \"https://localhost:8443/sessions/1\"}"
+				},
+				"url": {
+					"raw": "https://localhost:8443/presenceEntities",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"presenceEntities"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Session Login ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2aeeb5a3-dfd1-4093-99a6-301daa55f8c2",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", data.access_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "test.user1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "jwtpass",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{protocol}}://{{client-id}}:{{secret}}@{{url}}/oauth/token",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{url}}"
+					],
+					"auth": {
+						"user": "{{client-id}}",
+						"password": "{{secret}}"
+					},
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Login/Get oAuth2.0 JSON WEB TOKEN (JWT). "
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b7d81ddb-7e56-4bd7-aa2e-18fa6838eb27",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "05b25e20-c8e6-4a37-b3ad-b04bb47eaf20",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

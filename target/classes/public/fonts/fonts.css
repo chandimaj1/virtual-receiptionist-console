@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?t8aers');
+  src:  url('icomoon.eot?t8aers#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?t8aers') format('truetype'),
+    url('icomoon.woff?t8aers') format('woff'),
+    url('icomoon.svg?t8aers#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon-tick:before {
+  content: "\e900";
+}
+.icon-icon-close:before {
+  content: "\e901";
+}
+.icon-icon-search:before {
+  content: "\e902";
+}
+.icon-icon-incoming-calls:before {
+  content: "\e903";
+}
+.icon-icon-outgoing-calls:before {
+  content: "\e904";
+}
+.icon-icon-call-transfer:before {
+  content: "\e905";
+}
+.icon-icon-call-hold:before {
+  content: "\e906";
+}
+.icon-icon-call-hang-up:before {
+  content: "\e907";
+}
+.icon-icon-users:before {
+  content: "\e908";
+}
+.icon-icon-time:before {
+  content: "\e909";
+}
+.icon-icon-profile:before {
+  content: "\e90a";
+}
+.icon-icon-phone-settings:before {
+  content: "\e90b";
+}
+.icon-icon-phone-directory:before {
+  content: "\e90c";
+}
+.icon-icon-date:before {
+  content: "\e90d";
+}
+.icon-icon-call-history:before {
+  content: "\e90e";
+}
+.icon-icon-call-answer:before {
+  content: "\e90f";
+}
